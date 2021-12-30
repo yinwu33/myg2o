@@ -1,6 +1,8 @@
 #ifndef MYG2O_VERTEX_H
 #define MYG2O_VERTEX_H
 
+#include <string>
+
 #include "eigen_types.h"
 
 namespace myg2o
@@ -25,15 +27,17 @@ public:
 
   virtual void Plus(const VecX& delta);
 
-  int OrderingID() const { return ordering_id_; }
+  int OrderingId() const { return ordering_id_; }
 
-  void SetOrderingID(unsigned long id) { ordering_id_ = id; }
+  void SetOrderingId(unsigned long id) { ordering_id_ = id; }
 
   void SetFixed(bool fixed = true) { fixed_ = fixed; }
 
   bool isFixed() const { return fixed_; }
 
-private:
+  virtual std::string TypeInfo() = 0;
+
+protected:
   unsigned long id_;
   VecX parameters_;
   int local_dimension_;
