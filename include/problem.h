@@ -63,6 +63,32 @@ private:
 
   void UpdateStates();
 
+  void RollbackStates();
+
+  void ComputePrior();
+
+  bool IsPoseVertex(std::shared_ptr<Vertex> v);
+
+  bool IsLandmarkVertex(std::shared_ptr<Vertex> v);
+
+  void ResizePoseHessianWhenAddingPose(std::shared_ptr<Vertex> v);
+
+  bool CheckOrdering();
+
+  void LogoutVectorSize();
+
+  std::vector<std::shared_ptr<Edge>> GetConnectedEdge(std::shared_ptr<Vertex> vertex);
+
+  void ComputeLambdaInitLM();
+
+  void AddLambdaToHessiaanLM();
+
+  void RemoveLambdaHessianLM();
+
+  bool IsGoodStepLM();
+
+  VecX PCGSolver(const MatXX& A, const VecX& b, int maxIter);
+
 private:
   double current_lambda_;
   double current_chi_;

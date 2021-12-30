@@ -49,5 +49,20 @@ bool Problem::Solve(int iterations) {
   }
 
   Timer timer;
+
+  // todo
+
+  bool stop = false;
+  int iter = 0;
+  while (!stop and (iter < iterations)) {
+    std::cout << "iter: " << iter << ", chi: " << current_chi_ << ", lambda: " << current_lambda_ << std::endl;
+    bool onestep_success = false;
+    int false_count = 0;
+
+    while (!onestep_success) {
+      AddLambdaToHessiaanLM();
+    }
+  }
+
 }
 } // namespace myg2o
